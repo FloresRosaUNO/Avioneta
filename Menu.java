@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 //El programa para emular este estacionamiento tiene como entrada un carácter que indica una acción 
 //sobre la avioneta , y la matrícula de la avioneta. La acción puede ser llegada (E) o salida (S) 
@@ -11,6 +12,7 @@ public void menu(Estacionamiento a) {
 	{
 	do
 	{
+		try {
 	System.out.println("MENU DE OPERACIONES BIBLIOTECA");
 	System.out.println("1 - Dar entrada o salida a avioneta") ;
 	System.out.println("2 - Ver avionetas estacionadas") ;
@@ -18,7 +20,13 @@ public void menu(Estacionamiento a) {
 	
 	System.out.println("4 - Salir") ;
 	System.out.println("Ingrese una opcion: ");
-	opc=Teclado.nextInt();
+	opc=Teclado.nextInt();	
+		
+	}catch(InputMismatchException e) {
+		Teclado.nextLine();
+		opc=0;
+		System.out.print("Debe ingresar un numero entero como opcion\n");
+	}
 	if(opc==4)
 	{
 	System.out.println("Fin Programa");
